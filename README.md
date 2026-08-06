@@ -1,41 +1,66 @@
 # neural-seam-codex
 
-Bundle de plugin do **Neural Seam** para o **Codex CLI**. Empacota as skills `/ns-*` - a superficie de
-onboarding e de loop de trabalho - para que elas fiquem disponiveis em qualquer projeto da maquina, sem
-serem versionadas no repositorio do desenvolvedor.
+**Marketplace** de plugins do Neural Seam para o **Codex CLI**. Este repositorio nao e um plugin: ele e
+o catalogo que o host consome, e o plugin `neural-seam` vive dentro dele.
 
 Content-only: markdown e json, sem toolchain de codigo.
+
+## Por que a raiz e um marketplace, e nao o plugin
+
+O verbo de instalacao deste host resolve o plugin contra marketplaces **ja configurados**; ele nao
+aceita URL nem caminho de repositorio. Um repo que carregue apenas `.codex-plugin/plugin.json` na raiz
+**nao e instalavel** - o host nao tem por onde comeca-lo. O que ele consome e o manifesto de
+marketplace, que declara o proprio nome e aponta os plugins que distribui.
+
+Layout, espelhando o dos marketplaces que acompanham o host:
+
+```
+.agents/plugins/marketplace.json    catalogo: nome do marketplace + plugins que ele distribui
+plugins/neural-seam/                o plugin em si
+  .codex-plugin/plugin.json         manifesto do plugin (nome, versao, skills)
+  skills/ns-*/SKILL.md              as 11 skills da superficie
+```
 
 ## Instalacao
 
 ```
-codex plugin add <url-ou-caminho-deste-repo>
+codex plugin marketplace add NeuralSeam/neural-seam-codex
+codex plugin add neural-seam@neural-seam
 codex plugin list
 ```
 
+O `list` deve mostrar `neural-seam@neural-seam` como `installed, enabled`.
+
 O bundle e **obrigatorio por host**. Sem ele voce fica so com o guia de entrada que o runtime
 materializa no projeto, e o que voce consegue fazer passa a depender do que aquela maquina instalou -
-que e exatamente a divergencia de experiencia que o bundle existe para fechar. O `neural-seam connect`
-e o `neural-seam doctor` orientam a instalacao quando detectam o host sem o bundle; eles **nunca
-bloqueiam** por causa disso.
+exatamente a divergencia de experiencia que o bundle existe para fechar. O `neural-seam connect` e o
+`neural-seam doctor` orientam a instalacao quando detectam o host sem o bundle; eles **nunca bloqueiam**
+por causa disso.
+
+## Contrato de identidade (acoplado ao runtime)
+
+O runtime deriva a referencia `neural-seam@neural-seam` de `<nome do plugin>@<nome do marketplace>` e
+sonda o estado lendo a tabela de plugins do config do host. Logo **tres nomes tem de casar**:
+
+| Onde | Campo | Valor |
+| ---- | ----- | ----- |
+| `.agents/plugins/marketplace.json` | `name` | `neural-seam` |
+| `plugins/neural-seam/.codex-plugin/plugin.json` | `name` | `neural-seam` |
+| adapter do runtime | `PluginName` / `PluginMarketplace` | os dois acima |
+
+Mudar qualquer um sem o par no runtime quebra a deteccao **em silencio**: o dev instala o bundle e o
+`connect` segue mandando instalar. Mudar um lado exige mudar o outro no mesmo release.
 
 ## O que este bundle NAO faz (limitacoes estruturais, nao pendencias)
 
-- **Nao registra o servidor MCP e nao instala hooks.** O formato de plugin deste host nao os carrega: os
-  manifestos dos plugins distribuidos declaram apenas `skills`, e a feature de hooks de plugin esta
-  marcada como `removed`. Quem fia MCP e hooks e o **runtime**, no `config.toml` e no `hooks.json` do
-  escopo do usuario, com ou sem este bundle instalado. Consequencia pratica: **instalar o bundle nao
-  substitui `neural-seam connect`**.
+- **Nao registra o servidor MCP e nao instala hooks.** O formato de plugin deste host nao os carrega:
+  os manifestos dos plugins distribuidos declaram apenas `skills`, e a feature de hooks de plugin esta
+  marcada como `removed`. Quem fia MCP e hooks e o **runtime**, no escopo do usuario, com ou sem este
+  bundle instalado. Consequencia pratica: **instalar o bundle nao substitui `neural-seam connect`**.
 - **Nao empacota o binario `neural-seam`.** O binario e pre-requisito e se instala a parte.
 - **Nao substitui `neural-seam login` / `connect`.** Device flow, manifesto assinado e vinculo de
   projeto sao estado de produto e continuam no runtime.
 - **Nao imita o cliente oficial do host.** Este bundle e uma extensao explicita (compliance P4).
-
-## Incerteza declarada
-
-Nao ha evidencia, ate aqui, de que **prompts** e arquivos de **rules** sejam empacotaveis por este
-formato. Os itens ficaram sem sondar no levantamento da superficie do host, e estao registrados como
-incerteza, nao como fato - se voce confirmar num ou noutro sentido, atualize esta secao.
 
 ## Skills
 
@@ -56,9 +81,3 @@ incerteza, nao como fato - se voce confirmar num ou noutro sentido, atualize est
 O **vocabulario de conceitos** e o invariante entre hosts: os mesmos nomes logicos, o mesmo papel, o
 mesmo corpo. Como cada CLI grafa a invocacao e particularidade dela, nao do Neural Seam - quem troca de
 host reaprende a CLI, nunca o Neural Seam.
-
-## Contrato de identidade
-
-O nome do bundle e o do servidor MCP sao **contrato acoplado** ao runtime: o managed-cleanup do runtime
-reconhece o que e gerenciado por marcador, entao divergir de um lado sem o outro gera dupla-fiacao ou
-limpeza errada. Mudar qualquer um exige mudar o par no runtime no mesmo release.
