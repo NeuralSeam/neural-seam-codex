@@ -1,0 +1,20 @@
+{
+  "name": "neural-seam",
+  "version": "0.1.0",
+  "description": "Adapter de host do Neural Seam para o Codex CLI: empacota as skills /ns-* de onboarding e loop de trabalho. Extensao explicita - nao imita o codex, nao empacota o binario Go e nao substitui `neural-seam login`/`connect`. Requer o binario `neural-seam` no PATH e um projeto conectado.",
+  "author": "Neural Seam",
+  "license": "MIT",
+  "keywords": [
+    "neural-seam",
+    "harness",
+    "onboarding",
+    "mcp"
+  ],
+  "skills": "skills",
+  "interface": {
+    "displayName": "Neural Seam",
+    "shortDescription": "Skills /ns-* do Neural Seam: onboarding do projeto e loop de trabalho sobre os cards.",
+    "category": "productivity",
+    "defaultPrompt": "/ns-start"
+  }
+}

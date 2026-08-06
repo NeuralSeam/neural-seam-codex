@@ -1,0 +1,28 @@
+---
+name: ns-status
+description: "Neural Seam: bussola read-only do projeto. Diz o estado do onboarding (login, projeto criado, projeto vinculado a este diretorio) e exatamente qual comando vem a seguir. Ative quando o dev perguntar em que pe esta o Neural Seam, se o projeto esta conectado, por que as tools do neural-seam-runtime nao respondem, ou pedir /ns-status."
+---
+
+# /ns-status
+
+Skill gerenciada pelo Neural Seam. **Nao executa acao de mudanca** (P2): so consulta o estado e diz
+qual comando vem a seguir. E a bussola do fluxo.
+
+## Acao a executar agora
+
+1. Chame a tool `check_setup` do servidor MCP `neural-seam-runtime` (sem argumentos). O retorno e JSON
+   com o campo `status`.
+2. De acordo com `status`, reporte o estado e **o comando exato para colar**, e pare:
+
+   - **`needs_login`** -> rode `neural-seam login` no terminal (device flow). Depois `/ns-status`.
+   - **`needs_setup`** -> ainda nao ha projeto. Cenario greenfield: `/ns-create` (ele mostra o `setup_url` do wizard).
+   - **`needs_connect`** -> ja existe projeto no Neural Seam para vincular a este diretorio: `/ns-connect` (ele mostra o `connect_url` da bridge).
+   - **`import_candidate`** -> projeto brownfield: `neural-seam import` (mostre `detected_indicators`, se vier).
+   - **`trial_expired`** -> mostre `message` e a URL de `upgrade_url`.
+   - **`unsupported`** -> manifesto novo demais: `neural-seam upgrade`, depois `/ns-status`.
+   - **`ok`** -> ambiente pronto. Mostre `project_name`. Se `pending_jobs > 0`, sugira `/ns-generate` (bootstrap do backlog). Caso contrario, sugira `/ns-list` (ver os cards) ou `/ns-open` (abrir o dashboard).
+
+3. Se o `check_setup` retornar um campo `error` (rede/auth), sinalize o erro e oriente `/ns-doctor`, em
+   vez de seguir adiante.
+
+Para ser conduzido pelo proximo passo automaticamente (em vez de so ser informado), use `/ns-start`.
