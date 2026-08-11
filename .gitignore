@@ -1,0 +1,4 @@
+# Serena MCP local tooling state (project.yml, cache, memories). Local, never source.
+# Convention shared with the other submodules (src/backend, src/runtime): ignore the
+# whole folder, so an activated project never dirties this tree.
+.serena/
