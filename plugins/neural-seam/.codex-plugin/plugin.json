@@ -2,7 +2,12 @@
   "name": "neural-seam",
   "version": "0.1.0",
   "description": "Adapter de host do Neural Seam para o Codex CLI: empacota as skills /ns-* de onboarding e loop de trabalho. Extensao explicita - nao imita o codex, nao empacota o binario Go e nao substitui `neural-seam login`/`connect`. Requer o binario `neural-seam` no PATH e um projeto conectado.",
-  "author": "Neural Seam",
+  "author": {
+    "name": "Neural Seam",
+    "url": "https://github.com/NeuralSeam"
+  },
+  "homepage": "https://github.com/NeuralSeam/neural-seam-codex",
+  "repository": "https://github.com/NeuralSeam/neural-seam-codex",
   "license": "MIT",
   "keywords": [
     "neural-seam",
@@ -10,11 +15,23 @@
     "onboarding",
     "mcp"
   ],
-  "skills": "skills",
+  "skills": "./skills/",
   "interface": {
     "displayName": "Neural Seam",
     "shortDescription": "Skills /ns-* do Neural Seam: onboarding do projeto e loop de trabalho sobre os cards.",
-    "category": "productivity",
-    "defaultPrompt": "/ns-start"
+    "longDescription": "Integra o Codex CLI ao Neural Seam com skills de onboarding, conexao de projetos, diagnostico e execucao do fluxo de trabalho.",
+    "developerName": "Neural Seam",
+    "category": "Engineering",
+    "capabilities": [
+      "Project onboarding",
+      "Workflow orchestration",
+      "Diagnostics"
+    ],
+    "websiteURL": "https://github.com/NeuralSeam/neural-seam-codex",
+    "defaultPrompt": [
+      "/ns-start",
+      "/ns-doctor",
+      "/ns-status"
+    ]
   }
 }

@@ -11,7 +11,8 @@
         "path": "./plugins/neural-seam"
       },
       "policy": {
-        "installation": "AVAILABLE"
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
       },
       "category": "Engineering"
     }
