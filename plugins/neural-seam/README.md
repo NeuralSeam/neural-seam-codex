@@ -1,6 +1,6 @@
 # neural-seam-codex
 
-Bundle de plugin do **Neural Seam** para o **Codex CLI**. Empacota as skills `/ns-*` - a superficie de
+Bundle de plugin do **Neural Seam** para o **Codex CLI**. Empacota as skills `$neural-seam:ns-*` - a superficie de
 onboarding e de loop de trabalho - para que elas fiquem disponiveis em qualquer projeto da maquina, sem
 serem versionadas no repositorio do desenvolvedor.
 
@@ -45,21 +45,33 @@ Nao ha evidencia, ate aqui, de que **prompts** e arquivos de **rules** sejam emp
 formato. Os itens ficaram sem sondar no levantamento da superficie do host, e estao registrados como
 incerteza, nao como fato - se voce confirmar num ou noutro sentido, atualize esta secao.
 
-## Skills
+## Comandos slash e skills
 
-| Skill | O que faz |
+O formato de plugin registra skills, mas nao instala comandos slash diretamente. Este bundle fornece
+templates de *custom prompts* para preencher o menu `/`. A partir da raiz deste repositorio, instale-os
+no perfil local do Codex:
+
+```powershell
+.\plugins\neural-seam\scripts\install-prompts.ps1
+```
+
+Reinicie o Codex ou abra uma nova conversa. Use `/prompts:ns-start` (e os demais `/prompts:ns-*`).
+O namespace `prompts:` e exigido pelo Codex; o manifesto nao pode registrar `/ns-start` diretamente.
+As skills tambem podem ser chamadas com `$neural-seam:ns-*`; os prompts encaminham para elas.
+
+| Slash command | Skill direta | O que faz |
 | ----- | --------- |
-| `/ns-status` | Bussola: diz o estado e o proximo comando. |
-| `/ns-start` | Motor guiado: le o estado e avanca um passo. |
-| `/ns-create` | Nao tenho projeto: mostra o link do wizard. |
-| `/ns-connect` | Ja criei no wizard: vincula o projeto a este diretorio. |
-| `/ns-clone` | Clona so o codigo (idempotente). |
-| `/ns-doctor` | Repara o ambiente e confere registro MCP e hook trust. |
-| `/ns-generate` | Bootstrap do backlog: gera insumos e cria os cards. |
-| `/ns-list` | Lista os cards, agrupados por status. |
-| `/ns-open` | Mostra o link do dashboard/bridge local. |
-| `/ns-exec` | Renderiza o prompt do card para implementar. |
-| `/ns-help` | Indice das skills e o fluxo tipico. |
+| `/prompts:ns-status` | `$neural-seam:ns-status` | Bussola: diz o estado e o proximo comando. |
+| `/prompts:ns-start` | `$neural-seam:ns-start` | Motor guiado: le o estado e avanca um passo. |
+| `/prompts:ns-create` | `$neural-seam:ns-create` | Nao tenho projeto: mostra o link do wizard. |
+| `/prompts:ns-connect` | `$neural-seam:ns-connect` | Ja criei no wizard: vincula o projeto a esta pasta. |
+| `/prompts:ns-clone` | `$neural-seam:ns-clone` | Clona so o codigo (idempotente). |
+| `/prompts:ns-doctor` | `$neural-seam:ns-doctor` | Repara o ambiente e confere registro MCP e hook trust. |
+| `/prompts:ns-generate` | `$neural-seam:ns-generate` | Bootstrap do backlog: gera insumos e cria os cards. |
+| `/prompts:ns-list` | `$neural-seam:ns-list` | Lista os cards, agrupados por status. |
+| `/prompts:ns-open` | `$neural-seam:ns-open` | Mostra o link do dashboard/bridge local. |
+| `/prompts:ns-exec` | `$neural-seam:ns-exec` | Renderiza o prompt do card para implementar. |
+| `/prompts:ns-help` | `$neural-seam:ns-help` | Indice das skills e o fluxo tipico. |
 
 O **vocabulario de conceitos** e o invariante entre hosts: os mesmos nomes logicos, o mesmo papel, o
 mesmo corpo. Como cada CLI grafa a invocacao e particularidade dela, nao do Neural Seam - quem troca de

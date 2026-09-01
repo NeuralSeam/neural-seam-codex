@@ -1,9 +1,9 @@
 ---
 name: ns-generate
-description: "Neural Seam: bootstrap do backlog de um projeto ja conectado. Gera os insumos iniciais (spec, glossario, historias, modelo de dominio, backlog) e cria os cards a partir deles. Ative quando o projeto estiver ok com pending_jobs > 0, quando o dev quiser gerar o backlog/insumos iniciais, ou pedir /ns-generate."
+description: "Neural Seam: bootstrap do backlog de um projeto ja conectado. Gera os insumos iniciais (spec, glossario, historias, modelo de dominio, backlog) e cria os cards a partir deles. Ative quando o projeto estiver ok com pending_jobs > 0, quando o dev quiser gerar o backlog/insumos iniciais, ou pedir $neural-seam:ns-generate."
 ---
 
-# /ns-generate
+# $neural-seam:ns-generate
 
 Skill gerenciada pelo Neural Seam. Faz o **bootstrap do backlog** de um projeto ja pronto (`ok`): gera
 os insumos iniciais e transforma o backlog em cards. Toda inferencia nasce de acao manual do dev (P2):
@@ -12,7 +12,7 @@ voce apresenta o prompt, o dev decide gerar; **nada e submetido automaticamente*
 ## Acao a executar agora
 
 1. (Opcional) Confirme o estado com a tool `check_setup`. Se nao estiver `ok`, redirecione para
-   `/ns-start`.
+   `$neural-seam:ns-start`.
 2. Chame a tool `next_job`. Ela consome o job pendente de geracao de insumos e retorna `prompt` (o
    prompt de geracao renderizado) + `action_kind`. Apresente o `prompt` ao dev e **aguarde a
    confirmacao** - nao gere nada antes disso.
@@ -30,6 +30,6 @@ voce apresenta o prompt, o dev decide gerar; **nada e submetido automaticamente*
    `backlog`. Confira o JSON de retorno (artifacts no backend + copias em disco).
 5. Para cada item do backlog, chame a tool `create_activity` com `kind` (TECH, FEATURE, IMPROVE, BUG ou
    VERIFY), `title` e `description`. Guarde o `id` de cada card.
-6. Resuma: insumos persistidos + cards criados. Feche sugerindo `/ns-list` e `/ns-exec <id>`.
+6. Resuma: insumos persistidos + cards criados. Feche sugerindo `$neural-seam:ns-list` e `$neural-seam:ns-exec <id>`.
 
-Se qualquer tool retornar `error` (rede/auth), pare e oriente `neural-seam login` ou `/ns-doctor`.
+Se qualquer tool retornar `error` (rede/auth), pare e oriente `neural-seam login` ou `$neural-seam:ns-doctor`.

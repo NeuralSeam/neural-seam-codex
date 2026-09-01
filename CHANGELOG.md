@@ -8,9 +8,15 @@ Tags use the `neural-seam-codex-v*` prefix.
 
 ## [Unreleased]
 
+### Changed
+
+- **Invocacao no Codex**: adicionados templates de custom prompts e o instalador PowerShell. Depois de
+  instalados no perfil do Codex, os comandos aparecem como `/prompts:ns-*` e encaminham para as skills
+  `$neural-seam:ns-*`. O namespace `prompts:` e obrigatorio para comandos customizados.
+
 ### Added
 
-- **Bundle inicial**: `.codex-plugin/plugin.json` declarando `skills`, mais as 11 skills `/ns-*`
+- **Bundle inicial**: `.codex-plugin/plugin.json` declarando `skills`, mais as 11 skills `$neural-seam:ns-*`
   (`ns-clone`, `ns-connect`, `ns-create`, `ns-doctor`, `ns-exec`, `ns-generate`, `ns-help`, `ns-list`,
   `ns-open`, `ns-start`, `ns-status`). Os corpos sao os mesmos nomes logicos e os mesmos papeis dos
   outros hosts: o invariante e o vocabulario de conceitos, nao a string de invocacao.

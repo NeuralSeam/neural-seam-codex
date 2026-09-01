@@ -1,9 +1,9 @@
 ---
 name: ns-doctor
-description: "Neural Seam: diagnostica e remedia o ambiente (auth, language servers, registro do projeto) via `neural-seam doctor --fix`, e confere o registro do servidor MCP neural-seam-runtime e o estado do hook trust. Ative quando as tools do Neural Seam falharem, o servidor MCP nao aparecer, os hooks nao dispararem, houver erro de auth/rede, ou o dev pedir /ns-doctor."
+description: "Neural Seam: diagnostica e remedia o ambiente (auth, language servers, registro do projeto) via `neural-seam doctor --fix`, e confere o registro do servidor MCP neural-seam-runtime e o estado do hook trust. Ative quando as tools do Neural Seam falharem, o servidor MCP nao aparecer, os hooks nao dispararem, houver erro de auth/rede, ou o dev pedir $neural-seam:ns-doctor."
 ---
 
-# /ns-doctor
+# $neural-seam:ns-doctor
 
 Skill gerenciada pelo Neural Seam. Diagnostica e remedia o ambiente, depois confere as duas coisas que
 neste host falham **em silencio**: o registro do servidor MCP e o *hook trust*.
