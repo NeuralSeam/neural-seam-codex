@@ -1,6 +1,6 @@
 {
   "name": "neural-seam",
-  "version": "0.1.0+codex.20260901175838",
+  "version": "0.2.0+codex.20260902",
   "description": "Adapter de host do Neural Seam para o Codex CLI: empacota as skills $neural-seam:ns-* de onboarding e loop de trabalho. Extensao explicita - nao imita o codex, nao empacota o binario Go e nao substitui `neural-seam login`/`connect`. Requer o binario `neural-seam` no PATH e um projeto conectado.",
   "author": {
     "name": "Neural Seam",

@@ -21,10 +21,14 @@ Se o dev passou um `<projectId>` junto do comando, use-o no caminho de fallback 
      manifesto). Explique que **nao e preciso digitar o id**.
    - Se `status = needs_setup`, nao ha projeto para conectar -> redirecione para `$neural-seam:ns-create`.
    - Se `status = ok`, ja esta vinculado -> sugira `$neural-seam:ns-list`.
+   - Se `status = needs_clone`, o codigo do projeto nao esta nesta pasta -> redirecione para `$neural-seam:ns-clone <projectId>` e so volte ao connect **de dentro** da subpasta clonada, em sessao reaberta.
 
 2. **Fallback headless (o dev forneceu um `<projectId>`):** rode `neural-seam connect <projectId>`.
    Esse comando busca o manifesto assinado, verifica a assinatura e materializa o binding no diretorio
    atual. Use quando a UI da bridge nao estiver disponivel.
+   - **Ele pode recusar, e recusar e um resultado legitimo:** se o projeto ja tem repositorio registrado e este
+     diretorio nao e um clone dele, nada e escrito. Mostre a mensagem de recusa e siga o `$neural-seam:ns-clone` que
+     ela indica; nao insista nem contorne.
 
 3. Feche com o proximo passo: **apos vincular, rode `$neural-seam:ns-status`**; com `ok`, siga para `$neural-seam:ns-generate`
    (bootstrap) ou `$neural-seam:ns-clone <id>` se ainda faltar o codigo.

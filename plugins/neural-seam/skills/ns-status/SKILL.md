@@ -16,13 +16,18 @@ qual comando vem a seguir. E a bussola do fluxo.
 
    - **`needs_login`** -> rode `neural-seam login` no terminal (device flow). Depois `$neural-seam:ns-status`.
    - **`needs_setup`** -> ainda nao ha projeto. Cenario greenfield: `$neural-seam:ns-create` (ele mostra o `setup_url` do wizard).
+   - **`needs_clone`** -> ha projeto no Neural Seam, mas esta pasta nao e o repositorio dele: `$neural-seam:ns-clone <projectId>` primeiro (o id vem de `projects`). Depois do clone e preciso **reabrir a sessao dentro da subpasta clonada** antes do `connect` - `$neural-seam:ns-start` conduz esse passo.
    - **`needs_connect`** -> ja existe projeto no Neural Seam para vincular a este diretorio: `$neural-seam:ns-connect` (ele mostra o `connect_url` da bridge).
    - **`import_candidate`** -> projeto brownfield: `neural-seam import` (mostre `detected_indicators`, se vier).
    - **`trial_expired`** -> mostre `message` e a URL de `upgrade_url`.
    - **`unsupported`** -> manifesto novo demais: `neural-seam upgrade`, depois `$neural-seam:ns-status`.
    - **`ok`** -> ambiente pronto. Mostre `project_name`. Se `pending_jobs > 0`, sugira `$neural-seam:ns-generate` (bootstrap do backlog). Caso contrario, sugira `$neural-seam:ns-list` (ver os cards) ou `$neural-seam:ns-open` (abrir o dashboard).
 
-3. Se o `check_setup` retornar um campo `error` (rede/auth), sinalize o erro e oriente `$neural-seam:ns-doctor`, em
+3. Se o dev relatar que o `connect` recusou por o diretorio nao ser um clone do repositorio do projeto,
+   **mostre a recusa como ela veio** e aponte `$neural-seam:ns-clone`. Esta skill so informa (P2): nao vincule,
+   nao feche card, nao contorne a recusa.
+
+4. Se o `check_setup` retornar um campo `error` (rede/auth), sinalize o erro e oriente `$neural-seam:ns-doctor`, em
    vez de seguir adiante.
 
 Para ser conduzido pelo proximo passo automaticamente (em vez de so ser informado), use `$neural-seam:ns-start`.

@@ -10,6 +10,21 @@ Tags use the `neural-seam-codex-v*` prefix.
 
 ### Changed
 
+- **Primeiro run: clonar antes de vincular.** O `ns-start` trata o status novo `needs_clone` do
+  `check_setup` (projeto acessivel na nuvem, codigo ausente nesta pasta) roteando para
+  `$neural-seam:ns-clone <projectId>` **antes** de qualquer `connect`, com o id vindo do proprio
+  `check_setup`. Junto vai a **trava de pasta**: depois do clone e preciso reabrir a sessao dentro da
+  subpasta clonada, senao o MCP resolve a raiz pelo cwd antigo e o manifesto nasce na pasta pai, longe
+  do codigo.
+- **Recusa do guard de raiz nunca e engolida.** `ns-start`, `ns-status` e `ns-connect` passam a tratar a
+  recusa do `connect` (diretorio que nao e clone do repositorio do projeto) como resultado a mostrar ao
+  dev, conduzindo ao clone. Seguir adiante como se o vinculo tivesse ocorrido reproduziria o mesmo bug
+  com outra roupa.
+- **Card de setup do Aspire cumprido** (`ns-start`): confirmado o Aspire na mesma sessao, a skill procura
+  o card pelo titulo estavel, **apresenta** a opcao de fecha-lo e **aguarda a confirmacao do dev** antes
+  de escrever. A fronteira P2 esta escrita na propria skill: vale na sessao que o dev disparou, nunca por
+  evento remoto.
+
 - **Invocacao no Codex**: adicionados templates de custom prompts e o instalador PowerShell. Depois de
   instalados no perfil do Codex, os comandos aparecem como `/prompts:ns-*` e encaminham para as skills
   `$neural-seam:ns-*`. O namespace `prompts:` e obrigatorio para comandos customizados.
