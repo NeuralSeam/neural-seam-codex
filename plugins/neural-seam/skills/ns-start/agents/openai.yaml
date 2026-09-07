@@ -1,0 +1,12 @@
+interface:
+  display_name: "Neural Seam Start"
+  short_description: "Guided onboarding, one step at a time"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "neural-seam-runtime"
+      description: "MCP server exposed by the neural-seam binary. Registered by this bundle."
+    - type: "cli"
+      value: "neural-seam"
+      description: "The Neural Seam runtime binary, on PATH. Not bundled: install it separately."

@@ -1,0 +1,9 @@
+interface:
+  display_name: "Neural Seam Cards"
+  short_description: "List the project's cards by status"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "neural-seam-runtime"
+      description: "MCP server exposed by the neural-seam binary. Registered by this bundle."

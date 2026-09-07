@@ -1,0 +1,9 @@
+interface:
+  display_name: "Neural Seam Dashboard"
+  short_description: "Show the local dashboard link"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "neural-seam-runtime"
+      description: "MCP server exposed by the neural-seam binary. Registered by this bundle."

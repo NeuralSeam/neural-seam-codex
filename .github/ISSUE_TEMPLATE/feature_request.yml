@@ -1,0 +1,34 @@
+name: Feature request
+description: Suggest a change to this bundle.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This bundle is deliberately **thin**: product logic lives in the `neural-seam` runtime and
+        the backend, not here. A request that teaches this bundle a product rule is usually a
+        request against the runtime, because the same rule would otherwise have to be written
+        again for every other host. See CONTRIBUTING.md.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is hard today
+      description: The problem, not the solution. What were you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like instead
+    validations:
+      required: true
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Where do you think this belongs
+      options:
+        - This bundle (specific to the Codex CLI)
+        - The neural-seam runtime (would apply to every host)
+        - Not sure
+    validations:
+      required: true

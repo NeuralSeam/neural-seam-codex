@@ -1,0 +1,10 @@
+interface:
+  display_name: "Neural Seam Help"
+  short_description: "Show the Neural Seam skills and the usual workflow"
+
+policy:
+  allow_implicit_invocation: true
+
+# No `dependencies` block on purpose: this skill is a static index. It calls no tool and
+# needs neither the binary nor the MCP server to answer, so declaring either would be a
+# dependency the skill does not have.

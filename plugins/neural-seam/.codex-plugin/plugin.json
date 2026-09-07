@@ -1,0 +1,41 @@
+{
+  "name": "neural-seam",
+  "version": "0.3.0",
+  "description": "Neural Seam host adapter for the OpenAI Codex CLI. Registers the neural-seam-runtime MCP server and the $neural-seam:ns-* skills for project onboarding and the day-to-day work loop. Requires the neural-seam binary on PATH.",
+  "author": {
+    "name": "Neural Seam",
+    "url": "https://github.com/NeuralSeam"
+  },
+  "homepage": "https://neuralseam.cloud",
+  "repository": "https://github.com/NeuralSeam/neural-seam-codex",
+  "license": "MIT",
+  "keywords": [
+    "neural-seam",
+    "mcp",
+    "onboarding",
+    "backlog",
+    "project-intelligence"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Neural Seam",
+    "shortDescription": "Your project's spec, conventions and backlog, served to Codex over MCP.",
+    "longDescription": "Neural Seam coordinates AI-assisted development: your project's spec, glossary, backlog, cards and per-path conventions live in Neural Seam and are served to the agent through MCP, instead of being reconstructed from the file tree every session. This bundle registers the neural-seam-runtime MCP server and adds the $neural-seam:ns-* skills for getting set up and working through cards. Neural Seam provides no model and runs no inference of its own.",
+    "developerName": "Neural Seam",
+    "category": "Engineering",
+    "capabilities": [
+      "Project onboarding",
+      "Workflow orchestration",
+      "Diagnostics"
+    ],
+    "websiteURL": "https://neuralseam.cloud",
+    "privacyPolicyURL": "https://github.com/NeuralSeam/neural-seam-codex/blob/main/PRIVACY.md",
+    "brandColor": "#5B5BD6",
+    "defaultPrompt": [
+      "Use $neural-seam:ns-start to set up this project.",
+      "Use $neural-seam:ns-list to see what is on the board.",
+      "Use $neural-seam:ns-doctor to check the environment."
+    ]
+  }
+}

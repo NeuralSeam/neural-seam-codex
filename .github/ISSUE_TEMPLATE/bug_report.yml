@@ -1,0 +1,63 @@
+name: Bug report
+description: Something in this bundle is wrong, broken or out of date.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repository is the Neural Seam **bundle** for the Codex CLI. The installed bundle
+        contains declarative Markdown, YAML and JSON. The repository also includes
+        contributor-facing JavaScript validation.
+
+        For a problem in the `neural-seam` runtime, the backend or the web app, use the support
+        form at https://app.neuralseam.cloud instead, so it reaches the right component.
+
+        Issues here are public. Do not paste tokens, private project identifiers, or source code
+        you cannot share.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you ran, what happened, and what you expected instead.
+      placeholder: |
+        I typed $neural-seam:ns-status and ...
+    validations:
+      required: true
+  - type: input
+    id: codex-version
+    attributes:
+      label: Codex CLI version
+      description: Output of `codex --version`.
+    validations:
+      required: true
+  - type: input
+    id: runtime-version
+    attributes:
+      label: neural-seam version
+      description: Output of `neural-seam version`. Write "not installed" if that is the problem.
+    validations:
+      required: true
+  - type: input
+    id: bundle-version
+    attributes:
+      label: Bundle version
+      description: From `codex plugin list`, or the latest entry in CHANGELOG.md.
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+    validations:
+      required: true
+  - type: checkboxes
+    id: triage
+    attributes:
+      label: Before opening
+      description: The five usual causes, from SUPPORT.md.
+      options:
+        - label: "`codex plugin list` shows `neural-seam@neural-seam`, enabled"
+        - label: "`neural-seam version` answers, so the binary is on my PATH"
+        - label: "`codex mcp list` shows `neural-seam-runtime`"
+        - label: "The first tool call was not cancelled by an approval prompt"
+        - label: "I ran `$neural-seam:ns-doctor`"

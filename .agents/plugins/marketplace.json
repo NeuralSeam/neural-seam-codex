@@ -1,0 +1,20 @@
+{
+  "name": "neural-seam",
+  "interface": {
+    "displayName": "Neural Seam"
+  },
+  "plugins": [
+    {
+      "name": "neural-seam",
+      "source": {
+        "source": "local",
+        "path": "./plugins/neural-seam"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Engineering"
+    }
+  ]
+}

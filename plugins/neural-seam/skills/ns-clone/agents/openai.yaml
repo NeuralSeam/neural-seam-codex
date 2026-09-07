@@ -1,0 +1,12 @@
+interface:
+  display_name: "Neural Seam Clone"
+  short_description: "Clone the project's code only"
+
+policy:
+  allow_implicit_invocation: false
+
+dependencies:
+  tools:
+    - type: "cli"
+      value: "neural-seam"
+      description: "The Neural Seam runtime binary, on PATH. Not bundled: install it separately."
