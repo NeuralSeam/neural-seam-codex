@@ -91,7 +91,7 @@ nome.
 | Skill | O que faz | Oferecida sozinha? |
 | --- | --- | --- |
 | `$neural-seam:ns-status` | Diz o estado e qual comando vem a seguir. | sim |
-| `$neural-seam:ns-start` | Guiado: lê o estado e avança um passo. | sim |
+| `$neural-seam:ns-start` | Guiado: lê o estado e avança um passo, vinculando esta pasta quando ainda não está vinculada. | não |
 | `$neural-seam:ns-create` | Ainda não há projeto: mostra o link do assistente. | sim |
 | `$neural-seam:ns-list [status] [kind]` | Lista os cards, agrupados por status. | sim |
 | `$neural-seam:ns-open` | Mostra o link do painel local. | sim |
@@ -104,7 +104,7 @@ nome.
 
 **A coluna "oferecida sozinha" é decisão, não acaso.** Toda skill que escreve (em disco, no backend ou
 no seu ambiente) declara `allow_implicit_invocation: false`, então o modelo não decide sozinho clonar
-um repositório, gerar um backlog ou mexer na sua configuração. Essas cinco rodam quando **você** as
+um repositório, gerar um backlog ou mexer na sua configuração. Essas seis rodam quando **você** as
 nomeia. Todas as 11 continuam invocáveis explicitamente.
 
 ## O que o bundle não fia, e por quê
