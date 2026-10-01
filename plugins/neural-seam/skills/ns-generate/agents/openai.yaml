@@ -1,6 +1,6 @@
 interface:
   display_name: "Neural Seam Generate"
-  short_description: "Bootstrap the backlog and its cards"
+  short_description: "Bootstrap or regenerate the backlog and its cards"
 
 policy:
   allow_implicit_invocation: false

@@ -36,7 +36,7 @@ decoration.
 
 | Skill | What it does |
 | ----- | ------------ |
-| `$neural-seam:ns-generate` | Bootstraps the backlog: generates the artefacts and creates the cards. |
+| `$neural-seam:ns-generate` | Bootstraps the backlog: generates the artefacts and creates the cards. Can also regenerate a backlog it generated before. |
 | `$neural-seam:ns-list [status] [kind]` | Lists the cards, grouped by status. |
 | `$neural-seam:ns-open` | Shows the local dashboard link. |
 | `$neural-seam:ns-exec <id>` | Renders a card's prompt for you to review and implement. |

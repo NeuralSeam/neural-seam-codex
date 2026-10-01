@@ -98,7 +98,7 @@ nome.
 | `$neural-seam:ns-connect [<id>]` | Projeto já existe: vincula a esta pasta. | não |
 | `$neural-seam:ns-clone <id>` | Clona só o código. Idempotente. | não |
 | `$neural-seam:ns-doctor` | Repara o ambiente: login, language servers, registro MCP. | não |
-| `$neural-seam:ns-generate` | Gera os insumos e cria os cards. | não |
+| `$neural-seam:ns-generate` | Gera os insumos e cria os cards. Também regenera um backlog gerado antes. | não |
 | `$neural-seam:ns-exec <id>` | Renderiza o prompt de implementação de um card. | não |
 | `$neural-seam:ns-help` | Índice de todas as skills acima. | sim |
 
