@@ -141,7 +141,7 @@ This host invokes a plugin's skills as `$<plugin>:<skill>`, so `$neural-seam:` i
 | Skill | What it does | Offered on its own? |
 | --- | --- | --- |
 | `$neural-seam:ns-status` | Reports the state and the command that comes next. | yes |
-| `$neural-seam:ns-start` | Guided: reads the state and advances one step. | yes |
+| `$neural-seam:ns-start` | Guided: reads the state and advances one step, binding this folder when it is not bound yet. | no |
 | `$neural-seam:ns-create` | No project yet: shows the setup wizard link. | yes |
 | `$neural-seam:ns-list [status] [kind]` | Lists cards, grouped by status. | yes |
 | `$neural-seam:ns-open` | Shows the local dashboard link. | yes |
@@ -155,7 +155,7 @@ This host invokes a plugin's skills as `$<plugin>:<skill>`, so `$neural-seam:` i
 **"Offered on its own" is a deliberate setting, not an accident.** Every skill that writes - to disk,
 to the backend, or to your environment - declares `allow_implicit_invocation: false`, so the model
 cannot decide by itself to clone a repository, generate a backlog or repair your configuration. Those
-five run when **you** name them. The read-only ones stay discoverable, because otherwise nothing could
+six run when **you** name them. The read-only ones stay discoverable, because otherwise nothing could
 offer you the way in.
 
 All 11 are callable explicitly, whatever this column says.

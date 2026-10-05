@@ -7,6 +7,25 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). The versi
 `plugins/neural-seam/.codex-plugin/plugin.json`, and it is strict semver. Tags use the
 `neural-seam-codex-v*` prefix.
 
+## [0.4.0]
+
+`$neural-seam:ns-start` now binds the project instead of pointing at a skill it could not reach.
+
+### Fixed
+
+- **`ns-start` binds an unbound directory itself.** It used to name `$neural-seam:ns-connect` and
+  stop, but that skill is only callable by name, so the start flow never got the directory bound.
+  It now takes the guided path the runtime returns, or runs `neural-seam connect <projectId>` after
+  you confirm, and checks the state again before moving on.
+
+### Changed
+
+- **`ns-start` is no longer offered to the model on its own.** It writes the binding now, so it
+  follows the policy of every skill that writes: `allow_implicit_invocation: false`. Six skills are
+  callable by name only, five stay discoverable (`ns-status` and `ns-help` remain the way in), and
+  all 11 remain callable explicitly. Not yet re-measured against a Codex release: the mechanism is
+  the one measured for 0.3.0.
+
 ## [0.3.0]
 
 The bundle now sets up its own MCP connection, the skills that change things no longer run unless you

@@ -170,7 +170,7 @@ CI: the CLI cannot be installed and authenticated reproducibly there.
    - `codex plugin list` shows `neural-seam@neural-seam` as `installed, enabled`, at the version in
      the manifest.
    - `codex mcp list` resolves `neural-seam-runtime`.
-   - `codex debug prompt-input` lists the six read-only skills and does **not** list the five that
+   - `codex debug prompt-input` lists the five read-only skills and does **not** list the six that
      declare `allow_implicit_invocation: false`. All 11 stay callable explicitly.
    - Disable the plugin in `config.toml`, confirm the skills and the MCP server both disappear, then
      re-enable and confirm they come back.

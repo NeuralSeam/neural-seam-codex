@@ -50,7 +50,8 @@ const HEX_COLOR = /^#[0-9A-Fa-f]{6}$/;
 // Skills that write: to disk, to the backend, or to the developer's environment. Each must
 // refuse implicit invocation, so the model cannot pick it up on its own. Read-only skills
 // stay discoverable, otherwise nothing could offer the entry point.
-const MUTATING_SKILLS = new Set(["ns-connect", "ns-clone", "ns-doctor", "ns-generate", "ns-exec"]);
+// ns-start is here because it writes the binding itself when the directory is not bound yet.
+const MUTATING_SKILLS = new Set(["ns-start", "ns-connect", "ns-clone", "ns-doctor", "ns-generate", "ns-exec"]);
 
 function readJson(file) {
   if (!fs.existsSync(file)) { fail(rel(file), "missing"); return null; }
