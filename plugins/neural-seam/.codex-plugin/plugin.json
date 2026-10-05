@@ -1,6 +1,6 @@
 {
   "name": "neural-seam",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Neural Seam host adapter for the OpenAI Codex CLI. Registers the neural-seam-runtime MCP server and the $neural-seam:ns-* skills for project onboarding and the day-to-day work loop. Requires the neural-seam binary on PATH.",
   "author": {
     "name": "Neural Seam",

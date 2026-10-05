@@ -148,7 +148,7 @@ This host invokes a plugin's skills as `$<plugin>:<skill>`, so `$neural-seam:` i
 | `$neural-seam:ns-connect [<id>]` | Project already exists: binds it to this folder. | no |
 | `$neural-seam:ns-clone <id>` | Clones the project's code only. Idempotent. | no |
 | `$neural-seam:ns-doctor` | Repairs the environment: sign in, language servers, MCP registration. | no |
-| `$neural-seam:ns-generate` | Bootstraps the backlog: generates the artefacts and creates the cards. | no |
+| `$neural-seam:ns-generate` | Bootstraps the backlog: generates the artefacts and creates the cards. Can also regenerate a backlog it generated before. | no |
 | `$neural-seam:ns-exec <id>` | Renders the implementation prompt for a card. | no |
 | `$neural-seam:ns-help` | Index of every skill above. | yes |
 
