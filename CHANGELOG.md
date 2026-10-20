@@ -7,6 +7,20 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). The versi
 `plugins/neural-seam/.codex-plugin/plugin.json`, and it is strict semver. Tags use the
 `neural-seam-codex-v*` prefix.
 
+## [0.5.1]
+
+### Changed
+
+- **Binding a project happens in the terminal.** `$neural-seam:ns-connect` and `$neural-seam:ns-start` present the link
+  that `check_setup` returns, which opens the Neural Seam web app, where you find the project
+  identifier. Nothing is bound from the browser: the skill then runs `neural-seam connect <projectId>`,
+  which fetches the signed manifest, verifies it and binds the current directory.
+- **`$neural-seam:ns-create` says how a new project reaches this directory.** Creating it in the web app binds
+  nothing here; the web app shows the `neural-seam connect <projectId>` command to run in this
+  directory.
+- **`$neural-seam:ns-open` shows the dashboard of the Neural Seam web app.** The skill no longer describes a
+  dashboard served locally or a tray app.
+
 ## [0.5.0]
 
 ### Added
